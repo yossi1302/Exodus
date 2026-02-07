@@ -1,0 +1,63 @@
+{
+    "Lecturer 1": {
+        "courses": ["BCS1220", "KEN1220"],
+        "unavailable": ["2025-11-15", "2025-11-22"]
+    },
+    "Lecturer 2": {
+        "courses": ["BCS1220", "KEN1220"],
+        "unavailable": ["2025-10-30"]
+    },
+    "Lecturer 3": {
+        "courses": ["BCS1440", "KEN1440"],
+        "unavailable": ["2025-11-08", "2025-11-29"]
+    },
+    "Lecturer 4": {
+        "courses": ["BCS1440", "KEN1440"],
+        "unavailable": ["2025-11-12"]
+    },
+    "Lecturer 5": {
+        "courses": ["BCS1530", "KEN1530"],
+        "unavailable": ["2025-10-27", "2025-11-03"]
+    },
+    "Lecturer 6": {
+        "courses": ["BCS1530", "KEN1530"],
+        "unavailable": ["2025-11-18"]
+    },
+    "Lecturer 7": {
+        "courses": ["BCS1530", "KEN1530"],
+        "unavailable": ["2025-11-25", "2025-12-02"]
+    },
+    "Lecturer 8": {
+        "courses": ["BCS2110"],
+        "unavailable": ["2025-11-06"]
+    },
+    "Lecturer 9": {
+        "courses": ["BCS2110"],
+        "unavailable": ["2025-11-14", "2025-11-28"]
+    },
+    "Lecturer 10": {
+        "courses": ["BCS2210"],
+        "unavailable": ["2025-10-29"]
+    },
+    "Lecturer 11": {
+        "courses": ["BCS2710"],
+        "unavailable": ["2025-11-11", "2025-11-20"]
+    },
+    "Lecturer 12": {
+        "courses": ["BCS2720", "KEN2240"],
+        "unavailable": ["2025-11-05"]
+    },
+    "Lecturer 13": {
+        "courses": ["BCS2720", "KEN2240"],
+        "unavailable": ["2025-11-19", "2025-12-01"]
+    },
+    "Lecturer 14": {
+        "courses": ["KEN2230"],
+        "unavailable": ["2025-11-07"]
+    },
+    "Lecturer 15": {
+        "courses": ["KEN2530"],
+        "unavailable": ["2025-11-13", "2025-11-27"]
+    }
+}
+```

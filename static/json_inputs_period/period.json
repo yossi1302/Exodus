@@ -1,0 +1,13 @@
+{
+    "period": "Period 2",
+    "year": "2025-2026",
+    "weeks": [
+    {"week": 1, "start_date": "2025-10-27"},
+    {"week": 2, "start_date": "2025-11-03"},
+    {"week": 3, "start_date": "2025-11-10"},
+    {"week": 4, "start_date": "2025-11-17"},
+    {"week": 5, "start_date": "2025-11-24"},
+    {"week": 6, "start_date": "2025-12-01"}
+    ],
+    "excluded_dates": []
+}
