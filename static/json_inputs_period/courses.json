@@ -1,56 +1,67 @@
 {
   "BCS1220":{
      "name": "Objects in Programming (OIP)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 1", "Lecturer 2"]
    },
   "BCS1440": {
      "name": "Calculus (CAL)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 3", "Lecturer 4"]
    },
   "BCS1530": {
      "name": "Logic (LO)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 5", "Lecturer 6", "Lecturer 7"]
    },
   "BCS2110": {
      "name": "Computer Networks (CN)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 8", "Lecturer 9"]
    },
    "BCS2210": {
      "name": "Software Engineering and Architectures (SEA)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 10"]
    },
    "BCS2710": {
      "name": "Intelligent Interaction (II)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 11"]
    },
    "BCS2720": {
      "name": "AI and Machine Learning (AIML)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 12", "Lecturer 13"]
    }, 
    "KEN1440": {
-      "name:": "Calculus (CAL)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+      "name": "Calculus (CAL)",
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 3", "Lecturer 4"]
    },
    "KEN1530": {
      "name": "Logic (LO)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 5", "Lecturer 6", "Lecturer 7"]
    },
   "KEN1220":{
      "name": "Objects in Programming (OIP)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 1", "Lecturer 2"]
    },
   "KEN2230":{
      "name": "Reasoning Techniques (RT)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 14"]
    },
   "KEN2240":{
      "name": "Machine Learning (ML)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 12", "Lecturer 13"]
    },
   "KEN2530":{
      "name": "Simulation and Statistical Analysis (SASA)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
+     "lecturers": ["Lecturer 15"]
    }
 }
-
-
