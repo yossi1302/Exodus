@@ -5,15 +5,17 @@ from pulp.apis.cuopt_api import LpBinary
 model = pulp.LpProblem("Model_Name", pulp.LpMaximize)  # or LpMinimize
 
 # 2. Define decision variables
+rooms = pulp.LpVariable.dicts("rooms", range(10), lowBound=0, upBound=20, cat="Integer")
+
 x = pulp.LpVariable("x", cat=LpBinary)
 y = pulp.LpVariable("y", lowBound=0)
 
 # 3. Objective function
-model += 3 * x + 2 * y, "Objective"
+model += pulp.lpSum(rooms.values()), "Maximize_Total_Rooms"
 
 # 4. Constraints
 model += x + y <= 10
-model += y <= 6
+model += x <= 6
 
 # 5. Solve
 model.solve()
@@ -22,4 +24,4 @@ model.solve()
 print("Status:", pulp.LpStatus[model.status])
 print("x =", pulp.value(x))
 print("y =", pulp.value(y))
-print("Objective =", pulp.value(model.objective))
+print("Maximum rooms =", pulp.value(model.objective))
