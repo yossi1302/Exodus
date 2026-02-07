@@ -1,0 +1,21 @@
+   {
+    "CS_Y1": {
+     "size": 300,
+     "courses": ["BCS1220", "BCS1440", "BCS1530"]
+   },
+   "CS_Y2": {
+     "size": 150,
+     "courses": ["BCS1220", "BCS1440", "BCS1530"]
+   },
+   "DS_Y1": {
+     "size": 300,
+     "courses": ["KEN1220", "KEN1440", "KEN1530"]
+   },
+   "DS_Y2": {
+     "size": 150,
+     "courses": ["KEN1220", "KEN1440", "KEN1530"]
+   }
+   "CS_Y2_ELECTIVE1":{
+    
+   }
+}

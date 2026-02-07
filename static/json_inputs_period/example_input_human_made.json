@@ -1,0 +1,20 @@
+{
+  "BCS1220":{
+     "name": "Objects in Programming (OIP)",
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+   },
+  "BCS1440": {
+     "name": "Calculus (CAL)",
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+   },
+  "BCS1530": {
+     "name": "Logic (LO)",
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+   },
+  "BCS2110": {
+     "name": "Computer Networks (CN)",
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+   }
+}
+
+

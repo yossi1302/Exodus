@@ -1,0 +1,30 @@
+{
+    "E. Smirnov": {
+     "courses": ["BCS1220", "KEN1220"],
+     "unavailable": []
+   },
+   "T. Bitterman": {
+     "courses": ["BCS1220", "KEN1220"],
+     "unavailable": []
+   },
+   "O. D'Huys": {
+     "courses": ["BCS1440", "KEN1440"],
+     "unavailable": []
+   },
+   "G. Schoenmakers": {
+     "courses": ["BCS1440", "KEN1440"],
+     "unavailable": []
+   },
+   "S. Maubach": {
+     "courses": ["BCS1530", "KEN1530"],
+     "unavailable": []
+   },
+   "T. Rienstra": {
+     "courses": ["BCS1530", "KEN1530"],
+     "unavailable": []
+   },
+   "N. Roos": {
+     "courses": ["BCS1530", "KEN1530"],
+     "unavailable": []
+   }
+}
