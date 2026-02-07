@@ -14,7 +14,20 @@
   "BCS2110": {
      "name": "Computer Networks (CN)",
      "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+   },
+   "BCS2210": {
+     "name": "Software Engineering and Architectures (SEA)",
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+   },
+   "BCS2710": {
+     "name": "Intelligent Interaction (II)",
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
+   },
+   "BCS2720": {
+     "name": "AI and Machine Learning (AIML)",
+     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
    }
+
   "KEN1440": {
       "name:": "Calculus (CAL)",
      "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]

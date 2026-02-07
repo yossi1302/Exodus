@@ -6,8 +6,8 @@
    },
    "CS_Y2": {
      "size": 150,
-     "courses": ["BCS1220", "BCS1440"],
-     "electives": []
+     "courses": ["BCS2110", "BCS2210"],
+     "electives": ["BCS2710", "BCS2720"]
    },
    "DS_Y1": {
      "size": 300,

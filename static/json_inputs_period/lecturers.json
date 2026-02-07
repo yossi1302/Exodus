@@ -1,7 +1,7 @@
 {
     "E. Smirnov": {
      "courses": ["BCS1220", "KEN1220"],
-     "unavailable": []
+     "unavailable": ["2025-12-3"]
    },
    "T. Bitterman": {
      "courses": ["BCS1220", "KEN1220"],
