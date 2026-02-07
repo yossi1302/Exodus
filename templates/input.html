@@ -1,53 +1,51 @@
 {% extends "base.html" %}
 
-{% block title %}Upload Requirements - FSP Schedule Generator{% endblock %}
+{% block title %}Generate Schedule - FSP Schedule Generator{% endblock %}
 
 {% block content %}
 <div class="upload-section">
-    <h2>Upload Schedule Requirements</h2>
-    <p>Upload a JSON file containing course information, teacher availability, and program details.</p>
+    <h2>Generate Schedule</h2>
+    <p>Click the button below to generate a schedule using the course data, lecturer availability, and program information.</p>
+    <p><strong>Schedule for:</strong> Week of October 27, 2025</p>
     
     <div class="upload-form">
-        <form id="uploadForm" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="fileInput">Select JSON File</label>
-                <input type="file" id="fileInput" name="file" accept=".json" required>
-            </div>
-            
+        <form id="uploadForm">
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Generate Schedule</button>
-                <a href="{{ url_for('download_example') }}" class="btn btn-secondary">Download Example</a>
+                <button type="submit" class="btn btn-primary">Generate Schedule Now</button>
             </div>
         </form>
         
         <div id="statusMessage" class="status-message"></div>
         <div id="loadingIndicator" class="loading" style="display: none;">
             <div class="spinner"></div>
-            <p>Generating schedule... This may take a few minutes.</p>
+            <p>Generating schedule with PuLP optimizer... This may take a few seconds.</p>
         </div>
     </div>
     
-    <div class="preview-section" id="previewSection" style="display: none;">
-        <h3>Input Preview</h3>
-        <pre id="jsonPreview"></pre>
+    <div class="info-section">
+        <h3>Data Sources</h3>
+        <ul>
+            <li><strong>Courses:</strong> static/json_inputs_period/courses.json</li>
+            <li><strong>Lecturers:</strong> static/json_inputs_period/lecturers.json</li>
+            <li><strong>Programs:</strong> static/json_inputs_period/programs.json</li>
+            <li><strong>Classrooms:</strong> static/json_inputs_static/classrooms.json</li>
+        </ul>
+        
+        <h3>Constraints Applied</h3>
+        <ol>
+            <li>Teacher can only teach one course at the same time</li>
+            <li>Required class hours met by end of week</li>
+            <li>No scheduling at unavailable teacher times</li>
+            <li>At least 50% of students fit in room</li>
+            <li>4 lecture slots per day (08:30, 11:00, 13:30, 16:00)</li>
+            <li>5 weekdays for lectures (Monday-Friday)</li>
+            <li>Student group has max 1 lecture at a time</li>
+            <li>Lectures before tutorials (Mon-Wed vs Thu-Fri)</li>
+            <li>No room conflicts</li>
+            <li>Each session scheduled exactly once</li>
+        </ol>
     </div>
 </div>
-
-<div class="instructions">
-    <h3>JSON Structure</h3>
-    <p>Your JSON file should contain the following structure:</p>
-    
-    <pre>{
-  "metadata": {
-    "period": "Period 2",
-    "year": "2024-2025",
-    "weeks": 7
-  },
-  "courses": [
-    {
-      "code": "BCS1220",
-      "name": "Course Name",
-      "lectures": 1,
       "tutorials": 1,
       "labs": 2,
       "hours_per_session": 2,
@@ -75,27 +73,19 @@
 document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const fileInput = document.getElementById('fileInput');
     const statusMessage = document.getElementById('statusMessage');
     const loadingIndicator = document.getElementById('loadingIndicator');
-    
-    if (!fileInput.files.length) {
-        statusMessage.className = 'status-message error';
-        statusMessage.textContent = 'Please select a file';
-        return;
-    }
     
     // Show loading
     loadingIndicator.style.display = 'block';
     statusMessage.textContent = '';
     
-    const formData = new FormData();
-    formData.append('file', fileInput.files[0]);
-    
     try {
         const response = await fetch('/input', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
         
         const result = await response.json();
@@ -118,24 +108,6 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
         loadingIndicator.style.display = 'none';
         statusMessage.className = 'status-message error';
         statusMessage.textContent = 'Error: ' + error.message;
-    }
-});
-
-// File preview
-document.getElementById('fileInput').addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            try {
-                const json = JSON.parse(event.target.result);
-                document.getElementById('jsonPreview').textContent = JSON.stringify(json, null, 2);
-                document.getElementById('previewSection').style.display = 'block';
-            } catch (error) {
-                document.getElementById('previewSection').style.display = 'none';
-            }
-        };
-        reader.readAsText(file);
     }
 });
 </script>

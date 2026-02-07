@@ -19,57 +19,36 @@ def index():
 
 @app.route('/input', methods=['GET', 'POST'])
 def input_page():
-    """JSON upload and validation interface"""
+    """JSON upload and validation interface - NOW SIMPLIFIED"""
     if request.method == 'POST':
-        if 'file' not in request.files:
-            return jsonify({'error': 'No file uploaded'}), 400
-        
-        file = request.files['file']
-        if file.filename == '':
-            return jsonify({'error': 'No file selected'}), 400
-        
-        if not file.filename.endswith('.json'):
-            return jsonify({'error': 'File must be JSON'}), 400
-        
+        # Generate schedule directly from the JSON files in static/
         try:
-            # Parse JSON
-            data = json.load(file)
-            
-            # Validate required fields
-            if 'courses' not in data or 'teachers' not in data or 'programs' not in data:
-                return jsonify({'error': 'Missing required fields: courses, teachers, programs'}), 400
-            
-            # Save to file with timestamp
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            filename = f'input_{timestamp}.json'
-            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            
-            with open(filepath, 'w') as f:
-                json.dump(data, f, indent=2)
-            
             # Generate schedule
-            try:
-                schedule_data = generate_schedule(data)
-                
-                # Save schedule
-                schedule_filename = f'schedule_{timestamp}.json'
-                schedule_filepath = os.path.join(app.config['UPLOAD_FOLDER'], schedule_filename)
-                
-                with open(schedule_filepath, 'w') as f:
-                    json.dump(schedule_data, f, indent=2)
-                
-                return jsonify({
-                    'success': True,
-                    'schedule_id': timestamp,
-                    'message': 'Schedule generated successfully!'
-                })
-            except Exception as e:
-                return jsonify({'error': f'Schedule generation failed: {str(e)}'}), 500
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             
-        except json.JSONDecodeError:
-            return jsonify({'error': 'Invalid JSON format'}), 400
+            schedule_data = generate_schedule({
+                'metadata': {
+                    'period': 'Period 2',
+                    'year': '2024-2025',
+                    'weeks': 1,
+                    'start_date': '2025-10-27'
+                }
+            })
+            
+            # Save schedule
+            schedule_filename = f'schedule_{timestamp}.json'
+            schedule_filepath = os.path.join(app.config['UPLOAD_FOLDER'], schedule_filename)
+            
+            with open(schedule_filepath, 'w') as f:
+                json.dump(schedule_data, f, indent=2)
+            
+            return jsonify({
+                'success': True,
+                'schedule_id': timestamp,
+                'message': 'Schedule generated successfully!'
+            })
         except Exception as e:
-            return jsonify({'error': str(e)}), 500
+            return jsonify({'error': f'Schedule generation failed: {str(e)}'}), 500
     
     return render_template('input.html')
 

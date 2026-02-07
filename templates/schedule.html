@@ -86,26 +86,66 @@
 </div>
 
 <div class="legend">
-    <h4>Legend</h4>
-    <div class="legend-items">
-        <div class="legend-item">
-            <span class="legend-color lecture"></span>
-            <span>Lecture</span>
-        </div>
-        <div class="legend-item">
-            <span class="legend-color tutorial"></span>
-            <span>Tutorial</span>
-        </div>
-        <div class="legend-item">
-            <span class="legend-color lab"></span>
-            <span>Lab</span>
-        </div>
+    <h4>Courses</h4>
+    <div class="legend-items" id="courseLegend">
+        <!-- Will be populated by JavaScript -->
     </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
+// Generate unique color for each course
+function stringToColor(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    
+    // Generate HSL color (varied hue, good saturation and lightness)
+    const hue = hash % 360;
+    const saturation = 65 + (hash % 20); // 65-85%
+    const lightness = 70 + (hash % 15);  // 70-85%
+    
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+// Apply colors to all courses
+document.addEventListener('DOMContentLoaded', () => {
+    const courseColors = {};
+    const courseNames = {};
+    
+    document.querySelectorAll('.session-card').forEach(card => {
+        const course = card.dataset.course;
+        
+        if (!courseColors[course]) {
+            courseColors[course] = stringToColor(course);
+            // Get course name from the card
+            const nameElement = card.querySelector('.session-name');
+            courseNames[course] = nameElement ? nameElement.textContent : course;
+        }
+        
+        card.style.backgroundColor = courseColors[course];
+        
+        // Add border with darker shade
+        const hsl = courseColors[course].match(/\d+/g);
+        const darkerColor = `hsl(${hsl[0]}, ${hsl[1]}%, ${parseInt(hsl[2]) - 20}%)`;
+        card.style.borderLeft = `4px solid ${darkerColor}`;
+    });
+    
+    // Create legend
+    const legend = document.getElementById('courseLegend');
+    Object.keys(courseColors).sort().forEach(course => {
+        const item = document.createElement('div');
+        item.className = 'legend-item';
+        item.innerHTML = `
+            <span class="legend-color" style="background-color: ${courseColors[course]};"></span>
+            <span><strong>${course}</strong>: ${courseNames[course]}</span>
+        `;
+        legend.appendChild(item);
+    });
+});
+
 document.getElementById('programFilter').addEventListener('change', (e) => {
     const program = e.target.value;
     const scheduleId = "{{ schedule_id }}";
