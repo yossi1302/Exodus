@@ -26,12 +26,11 @@
    "BCS2720": {
      "name": "AI and Machine Learning (AIML)",
      "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
-   }
-
-  "KEN1440": {
+   }, 
+   "KEN1440": {
       "name:": "Calculus (CAL)",
      "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
-   }
+   },
    "KEN1530": {
      "name": "Logic (LO)",
      "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
@@ -51,7 +50,7 @@
   "KEN2530":{
      "name": "Simulation and Statistical Analysis (SASA)",
      "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T" ]
-   },
+   }
 }
 
 
