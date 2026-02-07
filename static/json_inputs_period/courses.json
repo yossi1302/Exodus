@@ -1,67 +1,62 @@
 {
   "BCS1220":{
      "name": "Objects in Programming (OIP)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 1", "Lecturer 2"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Tom"]
    },
   "BCS1440": {
      "name": "Calculus (CAL)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 3", "Lecturer 4"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Ottie"]
    },
   "BCS1530": {
      "name": "Logic (LO)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 5", "Lecturer 6", "Lecturer 7"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Filippe"]
    },
   "BCS2110": {
      "name": "Computer Networks (CN)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 8", "Lecturer 9"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Tony"]
    },
    "BCS2210": {
      "name": "Software Engineering and Architectures (SEA)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 10"]
-   },
-   "BCS2710": {
-     "name": "Intelligent Interaction (II)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 11"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Francessco"]
    },
    "BCS2720": {
      "name": "AI and Machine Learning (AIML)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 12", "Lecturer 13"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Tang"]
    }, 
    "KEN1440": {
       "name": "Calculus (CAL)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 3", "Lecturer 4"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Marieke"]
    },
    "KEN1530": {
      "name": "Logic (LO)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 5", "Lecturer 6", "Lecturer 7"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Stefan"]
    },
   "KEN1220":{
      "name": "Objects in Programming (OIP)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 1", "Lecturer 2"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Tom"]
    },
   "KEN2230":{
      "name": "Reasoning Techniques (RT)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 14"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Yan"]
    },
   "KEN2240":{
      "name": "Machine Learning (ML)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 12", "Lecturer 13"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Ashish"]
    },
   "KEN2530":{
      "name": "Simulation and Statistical Analysis (SASA)",
-     "timeline" : ["C", "C", "T","C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T", "C", "C", "T"],
-     "lecturers": ["Lecturer 15"]
+     "timeline" : ["C", "C", "T"],
+     "lecturers": ["Charis"]
    }
 }

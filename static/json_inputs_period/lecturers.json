@@ -1,47 +1,36 @@
 {
-    "Lecturer 1": {
-        "unavailable": ["2025-11-15", "2025-11-22"]
+    "Tom": {
+        "unavailable": []
     },
-    "Lecturer 2": {
-        "unavailable": ["2025-10-30"]
+    "Ottie": {
+        "unavailable": ["2025-10-27"]
     },
-    "Lecturer 3": {
-        "unavailable": ["2025-11-08", "2025-11-29"]
+    "Filippe": {
+        "unavailable": []
     },
-    "Lecturer 4": {
-        "unavailable": ["2025-11-12"]
+    "Tony": {
+        "unavailable": ["2025-10-31"]
     },
-    "Lecturer 5": {
-        "unavailable": ["2025-10-27", "2025-11-03"]
+    "Francessco": {
+        "unavailable": []
     },
-    "Lecturer 6": {
-        "unavailable": ["2025-11-18"]
+    "Tang": {
+        "unavailable": ["2025-10-27"]
     },
-    "Lecturer 7": {
-        "unavailable": ["2025-11-25", "2025-12-02"]
+    "Marieke": {
+        "unavailable": ["2025-10-31"]
     },
-    "Lecturer 8": {
-        "unavailable": ["2025-11-06"]
+    "Stefan": {
+        "unavailable": []
     },
-    "Lecturer 9": {
-        "unavailable": ["2025-11-14", "2025-11-28"]
+    "Yan": {
+        "unavailable": ["2025-10-29", "2025-10-30"]
     },
-    "Lecturer 10": {
-        "unavailable": ["2025-10-29"]
+    "Ashish 10": {
+        "unavailable": ["2025-10-29", "2025-10-30"]
     },
-    "Lecturer 11": {
-        "unavailable": ["2025-11-11", "2025-11-20"]
-    },
-    "Lecturer 12": {
-        "unavailable": ["2025-11-05"]
-    },
-    "Lecturer 13": {
-        "unavailable": ["2025-11-19", "2025-12-01"]
-    },
-    "Lecturer 14": {
-        "unavailable": ["2025-11-07"]
-    },
-    "Lecturer 15": {
-        "unavailable": ["2025-11-13", "2025-11-27"]
-    }
+    "Charis": {
+        "unavailable": ["2025-10-29", "2025-10-30"]
+    } 
+    
 }

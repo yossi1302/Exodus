@@ -1,22 +1,18 @@
    {
     "CS_Y1": {
-     "size": 300,
-     "courses": ["BCS1220", "BCS1440", "BCS1530"],
-     "electives": []
+     "size": 220,
+     "courses": ["BCS1220", "BCS1440", "BCS1530"]
    },
    "CS_Y2": {
-     "size": 150,
-     "courses": ["BCS2110", "BCS2210"],
-     "electives": ["BCS2710", "BCS2720"]
+     "size": 165,
+     "courses": ["BCS2110", "BCS2210", "BCS2210"]
    },
    "DS_Y1": {
-     "size": 300,
-     "courses": ["KEN1220", "KEN1440", "KEN1530"], 
-     "electives": []
+     "size": 180,
+     "courses": ["KEN1220", "KEN1440", "KEN1530"]
    },
    "DS_Y2": {
-     "size": 150,
-     "courses": ["KEN1220", "KEN1440", "KEN1530"], 
-     "electives": []
+     "size": 218,
+     "courses": ["KEN1220", "KEN1440", "KEN1530"]
     }
 }
