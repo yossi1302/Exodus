@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Schedule View - FSP Schedule Generator{% endblock %}
+
+{% block content %}
+<div class="schedule-header">
+    <h2>Generated Schedule</h2>
+    {% if schedule.metadata %}
+    <p class="schedule-meta">
+        {{ schedule.metadata.period }} - {{ schedule.metadata.year }}
+    </p>
+    {% endif %}
+    
+    <div class="program-selector">
+        <label>Filter by Program:</label>
+        <select id="programFilter">
+            <option value="">All Programs</option>
+            {% for prog_name in schedule.programs.keys() %}
+            <option value="{{ prog_name }}" {% if program == prog_name %}selected{% endif %}>{{ prog_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    {% if program %}
+    <div class="export-buttons">
+        <a href="{{ url_for('export_pdf', schedule_id=schedule_id, program=program) }}" class="btn btn-secondary">
+            📄 Download PDF
+        </a>
+        <a href="{{ url_for('export_excel', schedule_id=schedule_id, program=program) }}" class="btn btn-secondary">
+            📊 Download Excel
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<div class="schedule-container">
+    {% for week_key in schedule.schedule.keys()|sort %}
+    {% set week_data = schedule.schedule[week_key] %}
+    {% set week_num = week_key.replace('week_', '') %}
+    
+    <div class="week-section">
+        <h3>Week {{ week_num }}</h3>
+        
+        <div class="schedule-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="time-col">Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for timeslot in ['08:30', '11:00', '13:30', '16:00'] %}
+                    <tr>
+                        <td class="time-col">{{ timeslot }} – {{ '10:30' if timeslot == '08:30' else ('13:00' if timeslot == '11:00' else ('15:30' if timeslot == '13:30' else '18:00')) }}</td>
+                        {% for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'] %}
+                        <td class="schedule-cell">
+                            {% if week_data[day][timeslot] %}
+                                {% for session in week_data[day][timeslot] %}
+                                <div class="session-card {{ session.type }}" data-course="{{ session.course }}">
+                                    <div class="session-course">{{ session.course }}</div>
+                                    <div class="session-name">{{ session.course_name.split('(')[1].replace(')', '') if '(' in session.course_name else session.course_name }}</div>
+                                    <div class="session-details">
+                                        <span class="session-type">{{ session.type|capitalize }}</span>
+                                        <span class="session-room">{{ session.room }}</span>
+                                    </div>
+                                    <div class="session-teacher">{{ session.teacher }}</div>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="empty-slot">—</div>
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="legend">
+    <h4>Legend</h4>
+    <div class="legend-items">
+        <div class="legend-item">
+            <span class="legend-color lecture"></span>
+            <span>Lecture</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color tutorial"></span>
+            <span>Tutorial</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color lab"></span>
+            <span>Lab</span>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('programFilter').addEventListener('change', (e) => {
+    const program = e.target.value;
+    const scheduleId = "{{ schedule_id }}";
+    
+    if (program) {
+        window.location.href = `/schedule/${scheduleId}/${program}`;
+    } else {
+        window.location.href = `/schedule/${scheduleId}`;
+    }
+});
+
+// Add hover effects for same course
+document.querySelectorAll('.session-card').forEach(card => {
+    card.addEventListener('mouseenter', (e) => {
+        const course = card.dataset.course;
+        document.querySelectorAll(`[data-course="${course}"]`).forEach(c => {
+            c.classList.add('highlighted');
+        });
+    });
+    
+    card.addEventListener('mouseleave', (e) => {
+        document.querySelectorAll('.session-card').forEach(c => {
+            c.classList.remove('highlighted');
+        });
+    });
+});
+</script>
+{% endblock %}

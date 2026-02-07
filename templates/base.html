@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FSP Schedule Generator{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='schedule.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>FSP Course Scheduler</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('input_page') }}">Create Schedule</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Faculty of Science and Engineering - Maastricht University</p>
+        </div>
+    </footer>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "period": "Period 2",
+    "year": "2024-2025",
+    "weeks": 7
+  },
+  "courses": [
+    {
+      "code": "BCS1220",
+      "name": "Objects in Programming (OIP)",
+      "lectures": 1,
+      "tutorials": 0,
+      "labs": 2,
+      "hours_per_session": 2,
+      "theory_before_practical": true
+    },
+    {
+      "code": "BCS1440",
+      "name": "Calculus (CAL)",
+      "lectures": 1,
+      "tutorials": 1,
+      "labs": 0,
+      "hours_per_session": 2,
+      "theory_before_practical": true
+    },
+    {
+      "code": "BCS1530",
+      "name": "Logic (LO)",
+      "lectures": 1,
+      "tutorials": 1,
+      "labs": 0,
+      "hours_per_session": 2,
+      "theory_before_practical": true
+    },
+    {
+      "code": "KEN1220",
+      "name": "Objects in Programming (OIP)",
+      "lectures": 1,
+      "tutorials": 0,
+      "labs": 2,
+      "hours_per_session": 2,
+      "theory_before_practical": true
+    },
+    {
+      "code": "KEN1440",
+      "name": "Calculus (CAL)",
+      "lectures": 1,
+      "tutorials": 1,
+      "labs": 0,
+      "hours_per_session": 2,
+      "theory_before_practical": true
+    },
+    {
+      "code": "KEN1530",
+      "name": "Logic (LO)",
+      "lectures": 1,
+      "tutorials": 1,
+      "labs": 0,
+      "hours_per_session": 2,
+      "theory_before_practical": true
+    }
+  ],
+  "teachers": {
+    "E. Smirnov": {
+      "courses": ["BCS1220", "KEN1220"],
+      "unavailable": []
+    },
+    "T. Bitterman": {
+      "courses": ["BCS1220", "KEN1220"],
+      "unavailable": []
+    },
+    "O. D'Huys": {
+      "courses": ["BCS1440", "KEN1440"],
+      "unavailable": []
+    },
+    "G. Schoenmakers": {
+      "courses": ["BCS1440", "KEN1440"],
+      "unavailable": []
+    },
+    "S. Maubach": {
+      "courses": ["BCS1530", "KEN1530"],
+      "unavailable": []
+    },
+    "T. Rienstra": {
+      "courses": ["BCS1530", "KEN1530"],
+      "unavailable": []
+    },
+    "N. Roos": {
+      "courses": ["BCS1530", "KEN1530"],
+      "unavailable": []
+    }
+  },
+  "programs": {
+    "CS_Y1": {
+      "size": 300,
+      "courses": ["BCS1220", "BCS1440", "BCS1530"]
+    },
+    "DS_Y1": {
+      "size": 300,
+      "courses": ["KEN1220", "KEN1440", "KEN1530"]
+    }
+  }
+}

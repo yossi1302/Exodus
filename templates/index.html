@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Home - FSP Schedule Generator{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h2>Welcome to the FSP Course Scheduler</h2>
+    <p>Automated scheduling solution for Bachelor Computer Science and Data Science & AI programs</p>
+    
+    <div class="features">
+        <div class="feature-card">
+            <h3>📤 Upload Requirements</h3>
+            <p>Provide course details, teacher availability, and program requirements via JSON</p>
+        </div>
+        
+        <div class="feature-card">
+            <h3>⚙️ Smart Scheduling</h3>
+            <p>Hybrid CP-SAT and Genetic Algorithm ensures all hard and soft constraints are met</p>
+        </div>
+        
+        <div class="feature-card">
+            <h3>📊 View & Export</h3>
+            <p>Interactive web view with PDF and Excel export options</p>
+        </div>
+    </div>
+    
+    <div class="cta">
+        <a href="{{ url_for('input_page') }}" class="btn btn-primary">Create New Schedule</a>
+        <a href="{{ url_for('download_example') }}" class="btn btn-secondary">Download Example JSON</a>
+    </div>
+</div>
+
+<div class="info-section">
+    <h3>Key Features</h3>
+    <ul>
+        <li>✓ Respects teacher availability and room capacity constraints</li>
+        <li>✓ Ensures theory lectures before practical sessions</li>
+        <li>✓ Optimizes for even distribution across the week</li>
+        <li>✓ Minimizes student gaps between classes</li>
+        <li>✓ Handles 300+ students in Year 1 cohorts</li>
+        <li>✓ Supports 4 time slots per day across 5 weekdays</li>
+    </ul>
+</div>
+{% endblock %}
