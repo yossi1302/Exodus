@@ -1,30 +1,47 @@
 {
-    "E. Smirnov": {
-     "courses": ["BCS1220", "KEN1220"],
-     "unavailable": ["2025-12-3"]
-   },
-   "T. Bitterman": {
-     "courses": ["BCS1220", "KEN1220"],
-     "unavailable": []
-   },
-   "O. D'Huys": {
-     "courses": ["BCS1440", "KEN1440"],
-     "unavailable": []
-   },
-   "G. Schoenmakers": {
-     "courses": ["BCS1440", "KEN1440"],
-     "unavailable": []
-   },
-   "S. Maubach": {
-     "courses": ["BCS1530", "KEN1530"],
-     "unavailable": []
-   },
-   "T. Rienstra": {
-     "courses": ["BCS1530", "KEN1530"],
-     "unavailable": []
-   },
-   "N. Roos": {
-     "courses": ["BCS1530", "KEN1530"],
-     "unavailable": []
-   }
+    "Lecturer 1": {
+        "unavailable": ["2025-11-15", "2025-11-22"]
+    },
+    "Lecturer 2": {
+        "unavailable": ["2025-10-30"]
+    },
+    "Lecturer 3": {
+        "unavailable": ["2025-11-08", "2025-11-29"]
+    },
+    "Lecturer 4": {
+        "unavailable": ["2025-11-12"]
+    },
+    "Lecturer 5": {
+        "unavailable": ["2025-10-27", "2025-11-03"]
+    },
+    "Lecturer 6": {
+        "unavailable": ["2025-11-18"]
+    },
+    "Lecturer 7": {
+        "unavailable": ["2025-11-25", "2025-12-02"]
+    },
+    "Lecturer 8": {
+        "unavailable": ["2025-11-06"]
+    },
+    "Lecturer 9": {
+        "unavailable": ["2025-11-14", "2025-11-28"]
+    },
+    "Lecturer 10": {
+        "unavailable": ["2025-10-29"]
+    },
+    "Lecturer 11": {
+        "unavailable": ["2025-11-11", "2025-11-20"]
+    },
+    "Lecturer 12": {
+        "unavailable": ["2025-11-05"]
+    },
+    "Lecturer 13": {
+        "unavailable": ["2025-11-19", "2025-12-01"]
+    },
+    "Lecturer 14": {
+        "unavailable": ["2025-11-07"]
+    },
+    "Lecturer 15": {
+        "unavailable": ["2025-11-13", "2025-11-27"]
+    }
 }
