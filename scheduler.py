@@ -137,6 +137,38 @@ def solve_with_pulp(courses_dict, teachers, programs, classrooms, metadata):
     
     print(f"Created {len(variables)} variables for {len(all_sessions)} sessions")
     
+    # NEW CONSTRAINT: All 4 tutorial groups must be at same time/day
+    print("Adding parallel group constraints...")
+    for course_code in courses_dict.keys():
+        if courses_dict[course_code]['tutorials'] > 0:
+            for week in range(WEEKS):
+                # Get all 4 group sessions for this tutorial
+                group_sessions = [s for s in all_sessions 
+                                if s['course'] == course_code and 
+                                   s['type'] == 'tutorial' and 
+                                   s['week'] == week]
+                
+                if len(group_sessions) == 4:
+                    # For each day/time, either all 4 groups or none
+                    for day_idx in range(len(DAYS)):
+                        for time_idx in range(len(TIMESLOTS)):
+                            # Get variables for each group at this time
+                            group_vars_at_time = []
+                            for session in group_sessions:
+                                vars_for_group = [var for var_name, var in variables.items()
+                                                if (var_name.startswith(session['id']) and
+                                                    f"_d{day_idx}_t{time_idx}_" in var_name)]
+                                if vars_for_group:
+                                    # Each group can only be in one room, so sum is 0 or 1
+                                    group_sum = pulp.lpSum(vars_for_group)
+                                    group_vars_at_time.append(group_sum)
+                            
+                            # All 4 groups must have same value (all 0 or all 1)
+                            if len(group_vars_at_time) == 4:
+                                # If group 0 is scheduled, all others must be too
+                                for i in range(1, 4):
+                                    prob += group_vars_at_time[i] == group_vars_at_time[0]
+    
     # CONSTRAINT 10: Each lecture/tutorial only happens once
     for session in all_sessions:
         session_vars = [var for var_name, var in variables.items() 
@@ -153,22 +185,55 @@ def solve_with_pulp(courses_dict, teachers, programs, classrooms, metadata):
                 if room_vars:
                     prob += pulp.lpSum(room_vars) <= 1, f"Room_{room}_d{day_idx}_t{time_idx}"
     
-    # CONSTRAINT 1: Teacher can only teach one course at the same time
+    # CONSTRAINT 1: Teacher can only teach ONE COURSE at the same time
+    # (but can teach multiple groups of same course simultaneously)
     for day_idx in range(len(DAYS)):
         for time_idx in range(len(TIMESLOTS)):
             for teacher_name in teachers.keys():
-                # Find all sessions taught by this teacher
-                teacher_vars = []
+                # Find all sessions by this teacher
+                teacher_sessions_by_course = {}
                 for session in all_sessions:
                     if session['teacher'] == teacher_name:
+                        course = session['course']
+                        if course not in teacher_sessions_by_course:
+                            teacher_sessions_by_course[course] = []
+                        teacher_sessions_by_course[course].append(session)
+                
+                # If teacher teaches only one course, no conflict possible
+                if len(teacher_sessions_by_course) <= 1:
+                    continue
+                
+                # Teacher teaches multiple courses - use Big-M method
+                # At most 1 course can be active at this time
+                M = 10  # Big number
+                
+                course_indicators = {}
+                for course, sessions in teacher_sessions_by_course.items():
+                    # Indicator variable: is this course scheduled?
+                    ind = pulp.LpVariable(
+                        f"T_{teacher_name}_{course}_d{day_idx}_t{time_idx}",
+                        cat='Binary'
+                    )
+                    course_indicators[course] = ind
+                    
+                    # Get all variables for this course's sessions at this time
+                    course_vars = []
+                    for session in sessions:
                         for var_name, var in variables.items():
                             if (var_name.startswith(session['id']) and 
                                 f"_d{day_idx}_t{time_idx}_" in var_name):
-                                teacher_vars.append(var)
+                                course_vars.append(var)
+                    
+                    if course_vars:
+                        # If any session scheduled, indicator must be 1
+                        prob += pulp.lpSum(course_vars) <= M * ind
+                        # If indicator is 0, no sessions allowed
+                        prob += pulp.lpSum(course_vars) >= ind
                 
-                if teacher_vars:
-                    # Allow up to 4 (for tutorial groups taught simultaneously)
-                    prob += pulp.lpSum(teacher_vars) <= 4, f"Teacher_{teacher_name}_d{day_idx}_t{time_idx}"
+                # At most 1 course can have indicator = 1
+                if course_indicators:
+                    prob += pulp.lpSum(course_indicators.values()) <= 1, \
+                            f"Teacher_{teacher_name}_onecourse_d{day_idx}_t{time_idx}"
     
     # CONSTRAINT 7: At a time slot student group has one or none lectures
     for day_idx in range(len(DAYS)):
@@ -188,9 +253,30 @@ def solve_with_pulp(courses_dict, teachers, programs, classrooms, metadata):
                 if lecture_vars:
                     prob += pulp.lpSum(lecture_vars) <= 1, f"Program_{program_name}_d{day_idx}_t{time_idx}"
     
-    # CONSTRAINT 3: No scheduling at unavailable time for teachers (DISABLED - TODO)
-    # The date parsing logic might be causing issues
-    pass
+    # CONSTRAINT 3: No scheduling at unavailable time for teachers
+    # Week of Oct 27-31, 2025: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4
+    date_to_day = {
+        '2025-10-27': 0,  # Monday
+        '2025-10-28': 1,  # Tuesday
+        '2025-10-29': 2,  # Wednesday
+        '2025-10-30': 3,  # Thursday
+        '2025-10-31': 4   # Friday
+    }
+    
+    for session in all_sessions:
+        teacher = session['teacher']
+        if teacher and teacher in teachers:
+            unavailable_dates = teachers[teacher].get('unavailable', [])
+            for unavail_date in unavailable_dates:
+                if unavail_date in date_to_day:
+                    blocked_day = date_to_day[unavail_date]
+                    # Block all timeslots on this day for this teacher
+                    for time_idx in range(len(TIMESLOTS)):
+                        blocked_vars = [var for var_name, var in variables.items()
+                                      if (var_name.startswith(session['id']) and
+                                          f"_d{blocked_day}_t{time_idx}_" in var_name)]
+                        if blocked_vars:
+                            prob += pulp.lpSum(blocked_vars) == 0, f"Teacher_{teacher}_{session['id']}_unavail_d{blocked_day}_t{time_idx}"
     
     # CONSTRAINT 8: Flow - lectures before tutorials
     # For one week: ensure lectures happen Monday-Wednesday, tutorials Thursday-Friday
