@@ -95,47 +95,68 @@
 
 {% block scripts %}
 <script>
-// Generate unique color for each course
-function stringToColor(str) {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+// Generate maximally different colors using golden ratio
+function generateDistinctColors(n) {
+    const goldenRatioConjugate = 0.618033988749895;
+    const colors = [];
+    let hue = 0; // Start from red (0 degrees) for deterministic colors
+    
+    for (let i = 0; i < n; i++) {
+        hue += goldenRatioConjugate;
+        hue %= 1;
+        
+        // Convert to degrees and create HSL color
+        const h = Math.floor(hue * 360);
+        const s = 70 + (i % 3) * 10; // Vary saturation: 70, 80, 90
+        const l = 75 + (i % 2) * 5;   // Vary lightness: 75, 80
+        
+        colors.push(`hsl(${h}, ${s}%, ${l}%)`);
     }
     
-    // Generate HSL color (varied hue, good saturation and lightness)
-    const hue = hash % 360;
-    const saturation = 65 + (hash % 20); // 65-85%
-    const lightness = 70 + (hash % 15);  // 70-85%
-    
-    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    return colors;
 }
 
 // Apply colors to all courses
 document.addEventListener('DOMContentLoaded', () => {
     const courseColors = {};
     const courseNames = {};
+    const courses = [];
     
+    // Collect all unique courses
     document.querySelectorAll('.session-card').forEach(card => {
         const course = card.dataset.course;
-        
-        if (!courseColors[course]) {
-            courseColors[course] = stringToColor(course);
-            // Get course name from the card
+        if (!courses.includes(course)) {
+            courses.push(course);
             const nameElement = card.querySelector('.session-name');
             courseNames[course] = nameElement ? nameElement.textContent : course;
         }
-        
+    });
+    
+    // Sort courses for consistent coloring
+    courses.sort();
+    
+    // Generate distinct colors
+    const colors = generateDistinctColors(courses.length);
+    
+    // Assign colors to courses
+    courses.forEach((course, index) => {
+        courseColors[course] = colors[index];
+    });
+    
+    // Apply colors to all session cards
+    document.querySelectorAll('.session-card').forEach(card => {
+        const course = card.dataset.course;
         card.style.backgroundColor = courseColors[course];
         
         // Add border with darker shade
         const hsl = courseColors[course].match(/\d+/g);
-        const darkerColor = `hsl(${hsl[0]}, ${hsl[1]}%, ${parseInt(hsl[2]) - 20}%)`;
+        const darkerColor = `hsl(${hsl[0]}, ${hsl[1]}%, ${Math.max(parseInt(hsl[2]) - 25, 30)}%)`;
         card.style.borderLeft = `4px solid ${darkerColor}`;
     });
     
     // Create legend
     const legend = document.getElementById('courseLegend');
-    Object.keys(courseColors).sort().forEach(course => {
+    courses.forEach(course => {
         const item = document.createElement('div');
         item.className = 'legend-item';
         item.innerHTML = `
