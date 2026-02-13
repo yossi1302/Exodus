@@ -1,11 +1,11 @@
-{
+   {
     "CS_Y1": {
      "size": 220,
      "courses": ["BCS1220", "BCS1440", "BCS1530"]
    },
    "CS_Y2": {
      "size": 165,
-     "courses": ["BCS2110", "BCS2210", "BCS2720"]
+     "courses": ["BCS2110", "BCS2210", "BCS2210"]
    },
    "DS_Y1": {
      "size": 180,
@@ -13,6 +13,6 @@
    },
    "DS_Y2": {
      "size": 218,
-     "courses": ["KEN2230", "KEN2240", "KEN2530"]
+     "courses": ["KEN1220", "KEN1440", "KEN1530"]
     }
 }

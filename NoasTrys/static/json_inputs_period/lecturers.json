@@ -1,0 +1,36 @@
+{
+    "Tom": {
+        "unavailable": []
+    },
+    "Ottie": {
+        "unavailable": ["2025-10-27"]
+    },
+    "Filippe": {
+        "unavailable": []
+    },
+    "Tony": {
+        "unavailable": ["2025-10-31"]
+    },
+    "Francessco": {
+        "unavailable": []
+    },
+    "Tang": {
+        "unavailable": ["2025-10-27"]
+    },
+    "Marieke": {
+        "unavailable": ["2025-10-31"]
+    },
+    "Stefan": {
+        "unavailable": []
+    },
+    "Yan": {
+        "unavailable": ["2025-10-29", "2025-10-30"]
+    },
+    "Ashish 10": {
+        "unavailable": ["2025-10-29", "2025-10-30"]
+    },
+    "Charis": {
+        "unavailable": ["2025-10-29", "2025-10-30"]
+    } 
+    
+}
